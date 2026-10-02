@@ -33,58 +33,18 @@
   --- prior from col 0 = water (the column used) ---
   UNTRAINED : band 40 (931 nm)  weight 0.2148  corr 0.3482  C-H 7.39%  O-H 3.54%
               logit gap 1st-2nd = 11.47   range -16.12 to 16.12
-✅ Prior carregado: priors_tmp/tec_0.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_0.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_0.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_0.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_0.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_0.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_0.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_0.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_0.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_0.npy
-📊 Total parameters: 1,765
-  TRAINED   : top band {40}  weight [0.2136; 0.2192]  corr [0.3326; 0.3403]
-              C-H [7.14; 7.34]%   O-H [3.51; 3.58]%
-              max logit displacement [1.49; 1.94]   epochs run 154-200
-              test R2 median 0.9321 [0.8243; 0.9505]
+  TRAINED   : top band {40}  weight [0.2137; 0.2189]  corr [0.3325; 0.3395]
+              C-H [7.16; 7.33]%   O-H [3.51; 3.58]%
+              max logit displacement [1.62; 1.93]   epochs run 168-200
+              test R2 median 0.9051 [0.8748; 0.9489]
 
   --- prior from col 1 = fat ---
   UNTRAINED : band 40 (931 nm)  weight 0.2166  corr 0.3526  C-H 7.32%  O-H 3.64%
               logit gap 1st-2nd = 11.61   range -16.12 to 16.12
-✅ Prior carregado: priors_tmp/tec_1.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_1.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_1.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_1.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_1.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_1.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_1.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_1.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_1.npy
-📊 Total parameters: 1,765
-✅ Prior carregado: priors_tmp/tec_1.npy
-📊 Total parameters: 1,765
-  TRAINED   : top band {40}  weight [0.2162; 0.2212]  corr [0.3374; 0.3431]
-              C-H [7.05; 7.19]%   O-H [3.63; 3.66]%
-              max logit displacement [1.42; 1.90]   epochs run 149-200
-              test R2 median 0.8997 [0.8648; 0.9230]
+  TRAINED   : top band {40}  weight [0.2160; 0.2213]  corr [0.3370; 0.3442]
+              C-H [7.04; 7.21]%   O-H [3.63; 3.67]%
+              max logit displacement [1.47; 1.91]   epochs run 153-200
+              test R2 median 0.9078 [0.8507; 0.9516]
 
 ==========================================================================
  5. GASOLINE — target, split, H*, gates
@@ -98,25 +58,5 @@
   UNTRAINED : band 154 (1-based 155)  weight 0.1298  corr 0.5066
               logit gap 1st-2nd = 12.21
   published Table 2: band 154, weight 0.130, corr 0.507
-✅ Prior carregado: priors_tmp/gas.npy
-📊 Total parameters: 6,882
-✅ Prior carregado: priors_tmp/gas.npy
-📊 Total parameters: 6,882
-✅ Prior carregado: priors_tmp/gas.npy
-📊 Total parameters: 6,882
-✅ Prior carregado: priors_tmp/gas.npy
-📊 Total parameters: 6,882
-✅ Prior carregado: priors_tmp/gas.npy
-📊 Total parameters: 6,882
-✅ Prior carregado: priors_tmp/gas.npy
-📊 Total parameters: 6,882
-✅ Prior carregado: priors_tmp/gas.npy
-📊 Total parameters: 6,882
-✅ Prior carregado: priors_tmp/gas.npy
-📊 Total parameters: 6,882
-✅ Prior carregado: priors_tmp/gas.npy
-📊 Total parameters: 6,882
-✅ Prior carregado: priors_tmp/gas.npy
-📊 Total parameters: 6,882
-  TRAINED   : top band {154}  weight [0.1023; 0.1129]  corr [0.4873; 0.4999]
-              max logit displacement [1.19; 1.79]   test R2 median 0.9434
+  TRAINED   : top band {154}  weight [0.1025; 0.1098]  corr [0.4874; 0.4999]
+              max logit displacement [1.19; 1.78]   test R2 median 0.9455
