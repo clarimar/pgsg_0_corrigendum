@@ -71,22 +71,22 @@
   R2                          
   PLS                               0.919                    0.919                    0.946
   PLS, 5-fold                       0.921                    0.922                    0.955
-  Ours (ANOVA), teste unico         0.941        0.932 [0.82;0.95]        0.900 [0.86;0.92]
-  Ours (ANOVA), 5-fold              0.862        0.864 [0.85;0.89]        0.859 [0.83;0.90]
-  Ours (VIP), teste unico           0.903        0.930 [0.91;0.96]        0.924 [0.87;0.94]
-  Ours (RF), teste unico            0.938        0.930 [0.90;0.95]        0.932 [0.87;0.96]
-  Random init, teste unico          0.871        0.875 [0.81;0.92]        0.897 [0.85;0.94]
-  Plain CNN, teste unico            0.235      -0.016 [-2.71;0.21]       0.001 [-4.45;0.13]
+  Ours (ANOVA), teste unico         0.941        0.905 [0.87;0.95]        0.908 [0.85;0.95]
+  Ours (ANOVA), 5-fold              0.862        0.870 [0.84;0.89]        0.858 [0.69;0.89]
+  Ours (VIP), teste unico           0.903        0.919 [0.89;0.95]        0.948 [0.88;0.96]
+  Ours (RF), teste unico            0.938        0.926 [0.87;0.95]        0.940 [0.89;0.97]
+  Random init, teste unico          0.871        0.876 [0.82;0.92]        0.899 [0.82;0.92]
+  Plain CNN, teste unico            0.235     -0.058 [-14.27;0.21]       0.000 [-0.24;0.14]
 
   RMSE                        
   PLS                               0.296                    0.296                    0.243
   PLS, 5-fold                         ---                    0.262                    0.203
-  Ours (ANOVA), teste unico           ---        0.271 [0.23;0.44]        0.331 [0.29;0.38]
-  Ours (ANOVA), 5-fold              0.361        0.359 [0.32;0.38]        0.365 [0.31;0.40]
-  Ours (VIP), teste unico           0.323        0.275 [0.21;0.31]        0.288 [0.25;0.37]
-  Ours (RF), teste unico            0.258        0.274 [0.22;0.32]        0.272 [0.22;0.38]
-  Random init, teste unico          0.373        0.367 [0.29;0.46]        0.336 [0.25;0.40]
-  Plain CNN, teste unico            0.909        1.048 [0.92;2.00]        1.046 [0.98;2.44]
+  Ours (ANOVA), teste unico           ---        0.320 [0.23;0.37]        0.318 [0.23;0.40]
+  Ours (ANOVA), 5-fold              0.361        0.348 [0.32;0.39]        0.369 [0.33;0.49]
+  Ours (VIP), teste unico           0.323        0.297 [0.23;0.35]        0.238 [0.21;0.36]
+  Ours (RF), teste unico            0.258        0.282 [0.23;0.37]        0.256 [0.19;0.34]
+  Random init, teste unico          0.373        0.366 [0.29;0.44]        0.333 [0.29;0.45]
+  Plain CNN, teste unico            0.909        1.069 [0.93;4.06]        1.046 [0.97;1.16]
 
 ==============================================================================
  REPLICAS ANOMALAS NO 5-FOLD
@@ -99,7 +99,8 @@
   col 0 = agua:
     nenhuma
   col 1 = gordura:
-    nenhuma
+    semente 5: media 0.692  folds [0.829, 0.904, 0.863, 0.88, -0.013]
+    semente 7: media 0.689  folds [0.836, 0.892, 0.852, 0.873, -0.007]
 
   -> e por isso que a tabela acima usa MEDIANA, nao media.
 
@@ -114,15 +115,15 @@
   formas, para as duas colunas.
 
   col 0 = agua  (H* = 10)
-    contra PLS teste unico  PLS 0.919   PGSG 0.864   lacuna mediana 6.0%  faixa [3.1;7.7]
-    contra PLS 5-fold       PLS 0.922   PGSG 0.864   lacuna mediana 6.3%  faixa [3.4;8.0]
+    contra PLS teste unico  PLS 0.919   PGSG 0.870   lacuna mediana 5.3%  faixa [3.0;8.4]
+    contra PLS 5-fold       PLS 0.922   PGSG 0.870   lacuna mediana 5.6%  faixa [3.3;8.7]
 
   col 1 = gordura  (H* = 12)
-    contra PLS teste unico  PLS 0.946   PGSG 0.859   lacuna mediana 9.3%  faixa [5.0;12.0]
-    contra PLS 5-fold       PLS 0.955   PGSG 0.859   lacuna mediana 10.1%  faixa [5.9;12.8]
+    contra PLS teste unico  PLS 0.946   PGSG 0.858   lacuna mediana 9.3%  faixa [6.4;27.2]
+    contra PLS 5-fold       PLS 0.955   PGSG 0.858   lacuna mediana 10.1%  faixa [7.2;27.8]
 
-  PGSG 5-fold, agua x gordura: Wilcoxon pareado p=0.322, Mann-Whitney p=0.521
-  medianas: agua 0.864  gordura 0.859
+  PGSG 5-fold, agua x gordura: Wilcoxon pareado p=0.084, Mann-Whitney p=0.162
+  medianas: agua 0.870  gordura 0.858
   -> o PGSG praticamente nao muda. Quem muda e o PLS, que
      melhora; e e dai que vem o aumento da lacuna.
 
@@ -138,8 +139,8 @@
   os dois bracos, porque o braco sem prior sorteia as gates
   primeiro e as camadas seguintes acabam com pesos diferentes.
 
-  col 0 = agua       ANOVA 0.932   aleatorio 0.875   dif das medianas +0.057   Mann-Whitney p=0.004
-  col 1 = gordura    ANOVA 0.900   aleatorio 0.897   dif das medianas +0.003   Mann-Whitney p=0.678
+  col 0 = agua       ANOVA 0.905   aleatorio 0.876   dif das medianas +0.029   Mann-Whitney p=0.026
+  col 1 = gordura    ANOVA 0.908   aleatorio 0.899   dif das medianas +0.009   Mann-Whitney p=0.385
 
   ressalva: o braco ANOVA para observando o proprio teste e o
   aleatorio roda as 200 epocas. Sao criterios de parada
@@ -163,17 +164,17 @@
 
   coluna 0 (agua):
     sem treinar        banda topo  40 (931 nm, peso 0.215)  corr. com o prior 0.348
-    depois de treinar  banda topo  40 (931 nm, peso 0.219)  corr. com o prior 0.333
+    depois de treinar  banda topo  40 (931 nm, peso 0.219)  corr. com o prior 0.334
     logits: faixa inicial 32.2 (de -16.1 a 16.1)
-            deslocamento no treino: maior 1.89, mediano 0.14
+            deslocamento no treino: maior 1.81, mediano 0.11
             referencia do Adam em 200 passos a lr=0.01: ~2.0 (ordem de grandeza, nao teto rigido)
             distancia do 2o ao 1o colocado: 11.47
 
   coluna 1 (gordura):
     sem treinar        banda topo  40 (931 nm, peso 0.217)  corr. com o prior 0.353
-    depois de treinar  banda topo  40 (931 nm, peso 0.216)  corr. com o prior 0.343
+    depois de treinar  banda topo  40 (931 nm, peso 0.216)  corr. com o prior 0.344
     logits: faixa inicial 32.2 (de -16.1 a 16.1)
-            deslocamento no treino: maior 1.71, mediano 0.12
+            deslocamento no treino: maior 1.54, mediano 0.10
             referencia do Adam em 200 passos a lr=0.01: ~2.0 (ordem de grandeza, nao teto rigido)
             distancia do 2o ao 1o colocado: 11.61
 

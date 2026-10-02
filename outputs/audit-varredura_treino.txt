@@ -14,29 +14,29 @@
   5 epocas     peso 0.214 [0.213; 0.217]   corr 0.349 [0.347; 0.350]   reproduz em  3/10
   10 epocas    peso 0.214 [0.212; 0.217]   corr 0.348 [0.346; 0.350]   reproduz em  0/10
   20 epocas    peso 0.214 [0.212; 0.218]   corr 0.347 [0.344; 0.350]   reproduz em  0/10
-  50 epocas    peso 0.214 [0.213; 0.218]   corr 0.345 [0.342; 0.347]   reproduz em  0/10
+  50 epocas    peso 0.214 [0.212; 0.218]   corr 0.345 [0.342; 0.347]   reproduz em  0/10
   100 epocas   peso 0.215 [0.213; 0.218]   corr 0.342 [0.338; 0.344]   reproduz em  0/10
-  200 epocas   peso 0.215 [0.214; 0.219]   corr 0.336 [0.332; 0.339]   reproduz em  0/10
+  200 epocas   peso 0.216 [0.214; 0.219]   corr 0.336 [0.332; 0.339]   reproduz em  0/10
 
   GRADE B - lr, 200 epocas, paciencia 30, KL 0.001
-  lr 0.0001    peso 0.214 [0.214; 0.215]   corr 0.348 [0.348; 0.349]   reproduz em  3/10
+  lr 0.0001    peso 0.214 [0.214; 0.215]   corr 0.348 [0.348; 0.349]   reproduz em  4/10
   lr 0.0003    peso 0.214 [0.214; 0.214]   corr 0.348 [0.348; 0.349]   reproduz em  0/10
   lr 0.001     peso 0.214 [0.213; 0.215]   corr 0.347 [0.346; 0.348]   reproduz em  0/10
   lr 0.003     peso 0.214 [0.213; 0.215]   corr 0.346 [0.344; 0.347]   reproduz em  0/10
-  lr 0.01      peso 0.215 [0.214; 0.219]   corr 0.337 [0.333; 0.340]   reproduz em  0/10
+  lr 0.01      peso 0.215 [0.214; 0.219]   corr 0.337 [0.332; 0.339]   reproduz em  0/10
 
   GRADE C - peso do KL, 200 epocas, paciencia 30, lr 0.01
-  KL 0         peso 0.215 [0.214; 0.219]   corr 0.337 [0.333; 0.338]   reproduz em  0/10
-  KL 0.001     peso 0.215 [0.214; 0.219]   corr 0.337 [0.333; 0.340]   reproduz em  0/10
-  KL 0.01      peso 0.215 [0.213; 0.218]   corr 0.338 [0.334; 0.343]   reproduz em  0/10
-  KL 0.1       peso 0.208 [0.205; 0.212]   corr 0.348 [0.344; 0.350]   reproduz em  0/10
-  KL 1         peso 0.171 [0.160; 0.176]   corr 0.420 [0.408; 0.441]   reproduz em  0/10
-  KL 10        peso 0.139 [0.129; 0.150]   corr 0.493 [0.462; 0.526]   reproduz em  0/10
+  KL 0         peso 0.215 [0.214; 0.219]   corr 0.338 [0.333; 0.340]   reproduz em  0/10
+  KL 0.001     peso 0.215 [0.214; 0.219]   corr 0.337 [0.332; 0.339]   reproduz em  0/10
+  KL 0.01      peso 0.215 [0.213; 0.218]   corr 0.338 [0.334; 0.341]   reproduz em  0/10
+  KL 0.1       peso 0.209 [0.205; 0.212]   corr 0.347 [0.344; 0.350]   reproduz em  0/10
+  KL 1         peso 0.173 [0.161; 0.176]   corr 0.412 [0.410; 0.437]   reproduz em  0/10
+  KL 10        peso 0.136 [0.133; 0.146]   corr 0.503 [0.474; 0.513]   reproduz em  0/10
 
   LOGITS NO PROTOCOLO DO ARTIGO (lr 0.01, 200 ep, pac. 30, KL 0.001)
-  maior deslocamento de uma banda   mediana 1.78  faixa [1.49; 1.94]
+  maior deslocamento de uma banda   mediana 1.88  faixa [1.62; 1.93]
   distancia 1o-2o logit, inicio     11.47 a 11.47
-  distancia 1o-2o logit, fim        11.41 a 11.56
+  distancia 1o-2o logit, fim        11.42 a 11.58
    Computing ANOVA F-statistic...
 
 ==============================================================================
@@ -60,20 +60,20 @@
   GRADE B - lr, 200 epocas, paciencia 30, KL 0.001
   lr 0.0001    peso 0.129 [0.129; 0.129]   corr 0.507 [0.507; 0.507]   reproduz em  0/10
   lr 0.0003    peso 0.128 [0.128; 0.129]   corr 0.507 [0.507; 0.507]   reproduz em  0/10
-  lr 0.001     peso 0.126 [0.126; 0.127]   corr 0.506 [0.506; 0.507]   reproduz em  0/10
-  lr 0.003     peso 0.120 [0.118; 0.122]   corr 0.504 [0.502; 0.505]   reproduz em  0/10
-  lr 0.01      peso 0.108 [0.102; 0.113]   corr 0.496 [0.487; 0.500]   reproduz em  0/10
+  lr 0.001     peso 0.126 [0.125; 0.127]   corr 0.506 [0.506; 0.507]   reproduz em  0/10
+  lr 0.003     peso 0.121 [0.119; 0.128]   corr 0.505 [0.502; 0.506]   reproduz em  0/10
+  lr 0.01      peso 0.107 [0.102; 0.110]   corr 0.495 [0.487; 0.500]   reproduz em  0/10
 
   GRADE C - peso do KL, 200 epocas, paciencia 30, lr 0.01
-  KL 0         peso 0.107 [0.102; 0.110]   corr 0.495 [0.487; 0.500]   reproduz em  0/10
-  KL 0.001     peso 0.108 [0.102; 0.113]   corr 0.496 [0.487; 0.500]   reproduz em  0/10
-  KL 0.01      peso 0.106 [0.099; 0.109]   corr 0.496 [0.490; 0.502]   reproduz em  0/10
-  KL 0.1       peso 0.104 [0.100; 0.109]   corr 0.517 [0.514; 0.526]   reproduz em  0/10
-  KL 1         peso 0.103 [0.098; 0.105]   corr 0.554 [0.550; 0.568]   reproduz em  0/10
-  KL 10        peso 0.099 [0.091; 0.101]   corr 0.607 [0.593; 0.648]   reproduz em  0/10
+  KL 0         peso 0.107 [0.102; 0.109]   corr 0.495 [0.487; 0.500]   reproduz em  0/10
+  KL 0.001     peso 0.107 [0.102; 0.110]   corr 0.495 [0.487; 0.500]   reproduz em  0/10
+  KL 0.01      peso 0.106 [0.099; 0.110]   corr 0.496 [0.490; 0.502]   reproduz em  0/10
+  KL 0.1       peso 0.105 [0.100; 0.107]   corr 0.517 [0.515; 0.526]   reproduz em  0/10
+  KL 1         peso 0.103 [0.099; 0.106]   corr 0.554 [0.548; 0.568]   reproduz em  0/10
+  KL 10        peso 0.097 [0.090; 0.101]   corr 0.616 [0.599; 0.653]   reproduz em  0/10
 
   LOGITS NO PROTOCOLO DO ARTIGO (lr 0.01, 200 ep, pac. 30, KL 0.001)
-  maior deslocamento de uma banda   mediana 1.32  faixa [1.19; 1.79]
+  maior deslocamento de uma banda   mediana 1.34  faixa [1.19; 1.78]
   distancia 1o-2o logit, inicio     12.21 a 12.21
   distancia 1o-2o logit, fim        12.24 a 12.90
 

@@ -3,9 +3,12 @@
 Supporting material for the corrigendum to *Prior-guided spectral gating for
 interpretable deep learning in near-infrared spectroscopy*.
 
-Every finding was produced twice, independently, from the article's own public
-repository. Both reproductions are kept here side by side, unmerged, because
-where they differ the difference is itself part of the finding.
+Every finding was produced three times, independently, from the article's own
+public repository: by the auditor who found the problem, by a second person
+working without access to the first set of scripts, and by the corresponding
+author on a third machine. The two script sets are kept here side by side,
+unmerged, because where the runs differ the difference is itself part of the
+finding.
 
 ```
 reproductions/
@@ -59,20 +62,24 @@ and PLS gives R² 0.946 / RMSE 0.243.
 
 The network arms. The published pipeline sets no random seed, and even with
 seeds fixed the medians move with library versions. Running the *same* script on
-two machines:
+three machines:
 
-| arm (col 0 / col 1) | machine A | machine B |
-|---|---|---|
-| Ours (ANOVA), single test | 0.922 / 0.922 | 0.932 / 0.900 |
-| Ours (ANOVA), 5-fold | 0.869 / 0.868 | 0.864 / 0.859 |
-| Plain CNN, single test | −0.019 / 0.005 | −0.016 / 0.001 |
+| arm (col 0 / col 1) | machine A | machine B | machine C |
+|---|---|---|---|
+| Ours (ANOVA), single test | 0.922 / 0.922 | 0.932 / 0.900 | 0.905 / 0.908 |
+| Ours (ANOVA), 5-fold | 0.869 / 0.868 | 0.864 / 0.859 | 0.870 / 0.858 |
+| Plain CNN, single test | -0.019 / 0.005 | -0.016 / 0.001 | -0.058 / 0.000 |
+| PGSG-to-PLS gap, 5-fold | 5.7% / 9.1% | 6.3% / 10.0% | 5.6% / 10.1% |
 
 The replicate spread within a single machine is wider than the difference
 between machines — the single-test ANOVA arm alone ranges from 0.82 to 0.95.
 This is why the corrigendum reports the network rows as medians with ranges, to
-two decimals, and states the PGSG-to-PLS gap as approximately 6% on the
-published target and approximately 9% on the correct one, rather than as point
-values.
+two decimals, and states the gap as a range rather than a point value.
+
+The same caution applies to any test statistic computed over these replicates.
+The Wilcoxon test comparing the framework's 5-fold scores between the two
+targets gives p = 0.85 on one machine and p = 0.084 on another: both are above
+0.05, but no single p-value from this pipeline is worth quoting.
 
 ## One trap worth recording
 
@@ -94,7 +101,8 @@ Individual quantities taken in isolation behave differently, which is why the
 joint criterion was declared in advance.
 
 Across the twenty conditions of the sweep (training length, learning rate, KL
-weight), zero training is the only one that reproduces the pair in 10 of 10.
+weight), zero training is the only one that reproduces the pair in 10 of 10, and
+it does so on every machine the sweep has been run on.
 Every other condition reaches 3 of 10 or fewer, and those partial hits occur
 only at one to five epochs or at a learning rate of 1e-4 — conditions in which
 training has barely moved the model.
