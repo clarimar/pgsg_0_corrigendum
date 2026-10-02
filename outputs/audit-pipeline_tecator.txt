@@ -1,0 +1,181 @@
+==============================================================================
+ VERIFICACAO 3 - O PIPELINE DO TECATOR COM O ALVO CORRETO
+==============================================================================
+
+  replicas por linha: 10   (o pipeline original nao
+  fixa semente; cada execucao dele da um numero diferente)
+
+==============================================================================
+ CONFERENCIA: PEGUEI OS MODELOS CERTOS?
+==============================================================================
+
+  O manuscrito declara as contagens de parametros. Se batem, o
+  mapeamento 'Ours' = leve e 'Plain CNN' = pesada esta certo.
+
+  Ours, Tecator (leve, 100 bandas)        1,765  manuscrito    1,765  ok
+  Ours, Gasoline (leve, 401 bandas)       6,882  manuscrito    6,882  ok
+  Plain CNN (pesada, 100 bandas)        109,221  manuscrito  109,221  ok
+
+  nota: a 'Plain CNN' tambem tem a camada de portas e o prior
+  ANOVA - e a versao pesada do mesmo modelo, nao uma CNN sem
+  gating. O rotulo da tabela e deles; reproduzi o que o
+  train_proper.py faz.
+
+==============================================================================
+ COLUNA 0 (rotulada 'Fat') = AGUA
+==============================================================================
+
+  treino (172, 100)  teste (43, 100)
+  priors calculados sobre esta coluna:
+   Computing ANOVA F-statistic...
+   Computing Random Forest importance (100 trees)...
+
+  H* por LOO+1SE: H_min=14, RMSECV=0.2093, SE=0.0269 -> H*=10
+  Ours (ANOVA), teste unico    ok (10 replicas)
+  Ours (VIP), teste unico      ok (10 replicas)
+  Ours (RF), teste unico       ok (10 replicas)
+  Random init, teste unico     ok (10 replicas)
+  Plain CNN, teste unico       ok (10 replicas)
+  Ours (ANOVA), 5-fold         ok (10 replicas)
+
+==============================================================================
+ COLUNA 1 (rotulada 'Water') = GORDURA
+==============================================================================
+
+  treino (172, 100)  teste (43, 100)
+  priors calculados sobre esta coluna:
+   Computing ANOVA F-statistic...
+   Computing Random Forest importance (100 trees)...
+
+  H* por LOO+1SE: H_min=14, RMSECV=0.1874, SE=0.0245 -> H*=12
+  Ours (ANOVA), teste unico    ok (10 replicas)
+  Ours (VIP), teste unico      ok (10 replicas)
+  Ours (RF), teste unico       ok (10 replicas)
+  Random init, teste unico     ok (10 replicas)
+  Plain CNN, teste unico       ok (10 replicas)
+  Ours (ANOVA), 5-fold         ok (10 replicas)
+
+==============================================================================
+ TABELA 1, TECATOR - PUBLICADO x AGUA x GORDURA REAL
+==============================================================================
+
+  As linhas de rede sao MEDIANA [minimo;maximo] entre replicas.
+  O publicado e uma medida unica, e o +- dele e entre folds.
+
+  nota sobre o 'PLS, 5-fold': o manuscrito (linha 388) publica
+  0.921 +- 0.018, mas a saida do proprio autor
+  (revision_r1/one_se_output.txt) registra 0.9218 +- 0.0439 nas
+  mesmas folds. A media bate; o desvio, nao.
+
+                                PUBLICADO             col 0 = agua          col 1 = gordura
+  R2                          
+  PLS                               0.919                    0.919                    0.946
+  PLS, 5-fold                       0.921                    0.922                    0.955
+  Ours (ANOVA), teste unico         0.941        0.932 [0.82;0.95]        0.900 [0.86;0.92]
+  Ours (ANOVA), 5-fold              0.862        0.864 [0.85;0.89]        0.859 [0.83;0.90]
+  Ours (VIP), teste unico           0.903        0.930 [0.91;0.96]        0.924 [0.87;0.94]
+  Ours (RF), teste unico            0.938        0.930 [0.90;0.95]        0.932 [0.87;0.96]
+  Random init, teste unico          0.871        0.875 [0.81;0.92]        0.897 [0.85;0.94]
+  Plain CNN, teste unico            0.235      -0.016 [-2.71;0.21]       0.001 [-4.45;0.13]
+
+  RMSE                        
+  PLS                               0.296                    0.296                    0.243
+  PLS, 5-fold                         ---                    0.262                    0.203
+  Ours (ANOVA), teste unico           ---        0.271 [0.23;0.44]        0.331 [0.29;0.38]
+  Ours (ANOVA), 5-fold              0.361        0.359 [0.32;0.38]        0.365 [0.31;0.40]
+  Ours (VIP), teste unico           0.323        0.275 [0.21;0.31]        0.288 [0.25;0.37]
+  Ours (RF), teste unico            0.258        0.274 [0.22;0.32]        0.272 [0.22;0.38]
+  Random init, teste unico          0.373        0.367 [0.29;0.46]        0.336 [0.25;0.40]
+  Plain CNN, teste unico            0.909        1.048 [0.92;2.00]        1.046 [0.98;2.44]
+
+==============================================================================
+ REPLICAS ANOMALAS NO 5-FOLD
+==============================================================================
+
+  Antes de comparar qualquer coisa: alguma replica colapsou? Uma
+  fold que colapsa move a media da replica inteira, e a media
+  entre replicas depois.
+
+  col 0 = agua:
+    nenhuma
+  col 1 = gordura:
+    nenhuma
+
+  -> e por isso que a tabela acima usa MEDIANA, nao media.
+
+==============================================================================
+ A DISTANCIA ENTRE O PGSG E O PLS
+==============================================================================
+
+  O manuscrito resume como 'a performance gap of approximately
+  6%' (PGSG 0.862 contra PLS 0.919). Essa conta compara 5-fold
+  com teste unico. O proprio manuscrito da o numero justo na
+  linha 388: PLS em 5-fold = 0.921+-0.018. Refaco das duas
+  formas, para as duas colunas.
+
+  col 0 = agua  (H* = 10)
+    contra PLS teste unico  PLS 0.919   PGSG 0.864   lacuna mediana 6.0%  faixa [3.1;7.7]
+    contra PLS 5-fold       PLS 0.922   PGSG 0.864   lacuna mediana 6.3%  faixa [3.4;8.0]
+
+  col 1 = gordura  (H* = 12)
+    contra PLS teste unico  PLS 0.946   PGSG 0.859   lacuna mediana 9.3%  faixa [5.0;12.0]
+    contra PLS 5-fold       PLS 0.955   PGSG 0.859   lacuna mediana 10.1%  faixa [5.9;12.8]
+
+  PGSG 5-fold, agua x gordura: Wilcoxon pareado p=0.322, Mann-Whitney p=0.521
+  medianas: agua 0.864  gordura 0.859
+  -> o PGSG praticamente nao muda. Quem muda e o PLS, que
+     melhora; e e dai que vem o aumento da lacuna.
+
+==============================================================================
+ O PRIOR ANOVA GANHA DA INICIALIZACAO ALEATORIA?
+==============================================================================
+
+  O artigo argumenta que sim, comparando 0.941 com 0.871 - duas
+  medidas unicas. Com replicas:
+
+  O teste e Mann-Whitney, de amostras independentes, e NAO um
+  pareado por semente: a mesma semente nao emparelha nada entre
+  os dois bracos, porque o braco sem prior sorteia as gates
+  primeiro e as camadas seguintes acabam com pesos diferentes.
+
+  col 0 = agua       ANOVA 0.932   aleatorio 0.875   dif das medianas +0.057   Mann-Whitney p=0.004
+  col 1 = gordura    ANOVA 0.900   aleatorio 0.897   dif das medianas +0.003   Mann-Whitney p=0.678
+
+  ressalva: o braco ANOVA para observando o proprio teste e o
+  aleatorio roda as 200 epocas. Sao criterios de parada
+  diferentes, e isso favorece o braco com parada.
+
+==============================================================================
+ TABELA 2 - AS GATES SAO APRENDIDAS?
+==============================================================================
+
+  Duas coisas separadas, para nao confundir o que e leitura de
+  codigo com o que e medida:
+
+  (a) POR LEITURA: o analyze_gates.py cria um modelo novo e le as
+      gates. Nao ha torch.load ali, e nenhum script do pipeline
+      do Tecator chama torch.save - logo nao existe modelo
+      treinado para carregar. O que ele reporta e a inicializacao.
+
+  (b) POR MEDIDA: quanto o treino move as gates? SEMENTE 0 SO -
+      ilustracao. A medida em 10 sementes, e com outros lr, epocas
+      e KL, esta em scripts/verificar_varredura_treino.py.
+
+  coluna 0 (agua):
+    sem treinar        banda topo  40 (931 nm, peso 0.215)  corr. com o prior 0.348
+    depois de treinar  banda topo  40 (931 nm, peso 0.219)  corr. com o prior 0.333
+    logits: faixa inicial 32.2 (de -16.1 a 16.1)
+            deslocamento no treino: maior 1.89, mediano 0.14
+            referencia do Adam em 200 passos a lr=0.01: ~2.0 (ordem de grandeza, nao teto rigido)
+            distancia do 2o ao 1o colocado: 11.47
+
+  coluna 1 (gordura):
+    sem treinar        banda topo  40 (931 nm, peso 0.217)  corr. com o prior 0.353
+    depois de treinar  banda topo  40 (931 nm, peso 0.216)  corr. com o prior 0.343
+    logits: faixa inicial 32.2 (de -16.1 a 16.1)
+            deslocamento no treino: maior 1.71, mediano 0.12
+            referencia do Adam em 200 passos a lr=0.01: ~2.0 (ordem de grandeza, nao teto rigido)
+            distancia do 2o ao 1o colocado: 11.61
+
+  publicado na Tabela 2: 931 nm (0.215), corr. com o prior 0.348
+

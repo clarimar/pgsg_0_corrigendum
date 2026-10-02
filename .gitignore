@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+priors_tmp/
+.DS_Store

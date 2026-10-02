@@ -1,0 +1,122 @@
+
+==========================================================================
+ 1. TECATOR — which column is which
+==========================================================================
+  spectra (215, 100)   targets (215, 3)   header ['Fat', 'Water', 'Protein']
+   col 0  labelled Fat      min  39.30  max  76.60  mean  63.20
+   col 1  labelled Water    min   0.90  max  49.10  mean  18.14
+   col 2  labelled Protein  min  11.00  max  21.80  mean  17.68
+  canonical Tecator: fat 0.9-49.1, water 39.3-76.6, protein 11.0-21.8
+
+==========================================================================
+ 2. TECATOR — PLS under the published protocol, each column
+==========================================================================
+  train 172 / test 43
+  col label     is        H_min  H*    R2       RMSE     
+  0   Fat       water     14     10    0.9191   0.2957   
+       -> RMSECV at H_min = 0.2093 +/- 0.0269   (published: 0.2093 +/- 0.0269, H*=10)
+  1   Water     fat       14     12    0.9462   0.2428   
+  2   Protein   protein   15     13    0.9472   0.2480   
+  published Table 1: PLS R2 = 0.919, RMSE = 0.296
+
+==========================================================================
+ 3. TECATOR — PLS 5-fold on the training set
+==========================================================================
+  col 0 (water, H*=10): R2 = 0.9218 +/- 0.0491   RMSE = 0.2622
+  col 1 (fat, H*=12): R2 = 0.9547 +/- 0.0232   RMSE = 0.2034
+  published Section 4.2: 0.921 +/- 0.018
+
+==========================================================================
+ 4. TECATOR — gates: untrained vs trained (published Table 2: 0.215, r=0.348)
+==========================================================================
+
+  --- prior from col 0 = water (the column used) ---
+  UNTRAINED : band 40 (931 nm)  weight 0.2148  corr 0.3482  C-H 7.39%  O-H 3.54%
+              logit gap 1st-2nd = 11.47   range -16.12 to 16.12
+✅ Prior carregado: priors_tmp/tec_0.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_0.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_0.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_0.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_0.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_0.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_0.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_0.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_0.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_0.npy
+📊 Total parameters: 1,765
+  TRAINED   : top band {40}  weight [0.2136; 0.2192]  corr [0.3326; 0.3403]
+              C-H [7.14; 7.34]%   O-H [3.51; 3.58]%
+              max logit displacement [1.49; 1.94]   epochs run 154-200
+              test R2 median 0.9321 [0.8243; 0.9505]
+
+  --- prior from col 1 = fat ---
+  UNTRAINED : band 40 (931 nm)  weight 0.2166  corr 0.3526  C-H 7.32%  O-H 3.64%
+              logit gap 1st-2nd = 11.61   range -16.12 to 16.12
+✅ Prior carregado: priors_tmp/tec_1.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_1.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_1.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_1.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_1.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_1.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_1.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_1.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_1.npy
+📊 Total parameters: 1,765
+✅ Prior carregado: priors_tmp/tec_1.npy
+📊 Total parameters: 1,765
+  TRAINED   : top band {40}  weight [0.2162; 0.2212]  corr [0.3374; 0.3431]
+              C-H [7.05; 7.19]%   O-H [3.63; 3.66]%
+              max logit displacement [1.42; 1.90]   epochs run 149-200
+              test R2 median 0.8997 [0.8648; 0.9230]
+
+==========================================================================
+ 5. GASOLINE — target, split, H*, gates
+==========================================================================
+  spectra (60, 401)  targets (60, 1)  octane min 83.40 max 89.60   (article: 83.4 to 89.6)
+  train 48 / test 12   (article: 48/12)
+  H_min 6  H* 5  ->  R2 0.9752  RMSE 0.1453   (published 0.975 / 0.145, H*=5)
+  forced H=5: R2 0.9752  RMSE 0.1453
+  forced H=10: R2 0.9414  RMSE 0.2233
+
+  UNTRAINED : band 154 (1-based 155)  weight 0.1298  corr 0.5066
+              logit gap 1st-2nd = 12.21
+  published Table 2: band 154, weight 0.130, corr 0.507
+✅ Prior carregado: priors_tmp/gas.npy
+📊 Total parameters: 6,882
+✅ Prior carregado: priors_tmp/gas.npy
+📊 Total parameters: 6,882
+✅ Prior carregado: priors_tmp/gas.npy
+📊 Total parameters: 6,882
+✅ Prior carregado: priors_tmp/gas.npy
+📊 Total parameters: 6,882
+✅ Prior carregado: priors_tmp/gas.npy
+📊 Total parameters: 6,882
+✅ Prior carregado: priors_tmp/gas.npy
+📊 Total parameters: 6,882
+✅ Prior carregado: priors_tmp/gas.npy
+📊 Total parameters: 6,882
+✅ Prior carregado: priors_tmp/gas.npy
+📊 Total parameters: 6,882
+✅ Prior carregado: priors_tmp/gas.npy
+📊 Total parameters: 6,882
+✅ Prior carregado: priors_tmp/gas.npy
+📊 Total parameters: 6,882
+  TRAINED   : top band {154}  weight [0.1023; 0.1129]  corr [0.4873; 0.4999]
+              max logit displacement [1.19; 1.79]   test R2 median 0.9434
